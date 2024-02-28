@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app"></div>
+
+  <script>
+    let displayedNumber = ' ';
+    let number = 2;
+    let textBox = '';
+    let text = 'Bjarne Liker Alfabetet!'
+    let separator = '';
+    let firstWord = '';
+    let index = 0;
+    let firstNumber = 7;
+    let secondNumber = 3;
+    let result = ' ';
+
+    updateView()
+
+    function updateView(){
+      document.getElementById('app').innerHTML = /*html*/ `
+      
+      <div id="display">${displayedNumber}</div>
+      <button onclick="checkNumbers()">Multiply By 2</button>
+      <div id="text">${textBox}</div>
+      <button onclick="wordPrint()">Get First Word</button>
+
+      
+      <button onclick="giveSomeNumbers()">Check Numbers</button>
+
+      <div>${firstNumber}</div>
+      <div>${secondNumber}</div>
+      <div>${result}</div>
+      
+      
+      `;
+    }
+
+    function checkNumbers() {
+      multiplyBy2()
+      updateView()
+    }
+
+
+    function wordPrint() {
+      getFirstWord()
+      updateView()
+    }
+
+    function multiplyBy2(){
+      while (number <= 100) {
+        number = number*2;
+        displayedNumber += number + ' ';
+            console.log(number)
+            console.log(displayedNumber)
+      }
+
+    }
+
+    function getFirstWord(){
+
+      while(separator !== ' '){
+      if(text.charAt(index) === ' '){
+        separator = ' ';
+      }
+        firstWord += text.charAt(index);
+        index++;
+
+        textBox += firstWord + ' ';
+      }
+      console.log(text)
+    }
+
+
+    function giveSomeNumbers() {
+    while (firstNumber != secondNumber) {
+      firstNumber = createRandomNumber()
+      secondNumber = createRandomNumber()
+        console.log(firstNumber)
+        console.log(secondNumber)
+    }
+    if (firstNumber == secondNumber) {
+        result = 'You found my twin ' + firstNumber + ' and ' + secondNumber; 
+    }
+    updateView()
+    firstNumber = 1;
+    secondNumber = 0
+}
+
+function createRandomNumber() {
+    return Math.floor(Math.random() * 11);
+}
+
+  </script>
+</body>
+</html>
